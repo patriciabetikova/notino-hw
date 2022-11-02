@@ -48,9 +48,13 @@ First issue i see is in todo variable by using `var` in general. There's no good
 ```
 
 Second issue is in useEffect causing many many re-renders by omitting dependency array. In our usecase we need to set todos only once on mount after fetching them, therefore we need empty array.
-Third issue is incorrectly setting state, that is asynchronous. Best would be to work with most recent state that is received in setState function
+Third issue is incorrectly setting state, that is asynchronous. Best would be to work with most recent state that is received in setState function, e.g.:
 
-````
+```
+setState((prev) => [...prev, awaitedTodos[i]]);
+```
+
+```
 
 return (
 
@@ -62,5 +66,4 @@ return (
 );
 ```
 
-And last issue is not providing key for Todo component.
-````
+↑ And last issue is not providing key for Todo component.

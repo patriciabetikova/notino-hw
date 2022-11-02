@@ -2,9 +2,9 @@ import { FC } from "react";
 import { HomePage } from "./HomePage/HomePage";
 import { TodoDetailPage } from "./TodoDetailPage/TodoDetailPage";
 type Url = {
-  url: string;
-  path: string;
   component: FC;
+  path: string;
+  url: string;
   isExact?: boolean;
 };
 
@@ -16,8 +16,8 @@ export const urls: Record<string, Url> = {
     isExact: true,
   },
   todoDetail: {
-    url: "/detail",
-    path: "/detail",
+    url: "/detail/:id",
+    path: "/detail/:id",
     component: TodoDetailPage,
     isExact: true,
   },

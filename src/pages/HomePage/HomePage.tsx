@@ -1,45 +1,29 @@
-import React, { FC } from "react"
-import Todo from "../../components/Todo"
-
-// rework this into regular api call, feel free to use any open api
-let todos = (): Promise<{ id: string; title: string }[]> =>
-  new Promise(res => {
-    setTimeout(() => {
-      res([
-        {
-          id: "1",
-          title: "Go shopping",
-        },
-        {
-          id: "2",
-          title: "Job interview",
-        },
-        {
-          id: "3",
-          title: "Prepare homework",
-        },
-      ])
-    }, 100)
-  })
+import { Page } from "components/Page/Page";
+import { TodoListItem } from "components/TodoListItem/TodoListItem";
+import { TodosContext } from "context/todosContext";
+import React, { FC } from "react";
+import { useContext } from "react";
+import { TodoType } from "types/todos";
 
 export const HomePage: FC = () => {
-  const [state, setState] = React.useState<{ id: string; title: string }[]>([])
-
-  React.useEffect(() => {
-    ;(async () => {
-      let awaitedTodos = await todos()
-      console.log("awaited", awaitedTodos)
-      for (let i = 0; i < awaitedTodos.length; i++) {
-        setState(prev => [...prev, awaitedTodos[i]])
-      }
-    })()
-  }, [])
-
+  const { todos } = useContext(TodosContext);
+  console.log(!!todos?.filter((x) => x.checked === true).length);
   return (
-    <div>
-      {state.map(todo => (
-        <Todo todo={todo} />
-      ))}
-    </div>
-  )
-}
+    <Page>
+      <>
+        {!todos?.length ? (
+          <p>loading</p>
+        ) : (
+          <>
+            {todos.map((todo: TodoType) => (
+              <TodoListItem {...todo} key={todo.id} />
+            ))}
+            {!todos?.filter((x) => x.checked === true).length || (
+              <p>Congrats, you're done!</p>
+            )}
+          </>
+        )}
+      </>
+    </Page>
+  );
+};

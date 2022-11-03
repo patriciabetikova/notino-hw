@@ -1,14 +1,7 @@
-import { FC } from "react";
-import { HomePage } from "./HomePage/HomePage";
-import { TodoDetailPage } from "./TodoDetailPage/TodoDetailPage";
-type Url = {
-  component: FC;
-  path: string;
-  url: string;
-  isExact?: boolean;
-};
+import { HomePage } from "./HomePage/HomePage"
+import { TodoDetailPage } from "./TodoDetailPage/TodoDetailPage"
 
-export const urls: Record<string, Url> = {
+export const urls = {
   home: {
     url: "/",
     path: "/",
@@ -16,9 +9,9 @@ export const urls: Record<string, Url> = {
     isExact: true,
   },
   todoDetail: {
-    url: "/detail/:id",
+    url: (id: string) => `/detail/${id}`,
     path: "/detail/:id",
     component: TodoDetailPage,
     isExact: true,
   },
-};
+}

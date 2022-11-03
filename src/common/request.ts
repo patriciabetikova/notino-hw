@@ -1,5 +1,5 @@
-import axios, { Method } from "axios";
-import { config } from "config";
+import axios, { Method } from "axios"
+import { config } from "config"
 
 const request = (method: Method) => (url: string) =>
   new Promise((resolve, reject) => {
@@ -10,13 +10,12 @@ const request = (method: Method) => (url: string) =>
         "Content-Type": "application/json",
       },
     })
-      .then((x) => {
-        resolve(x.data);
+      .then(x => {
+        resolve(x.data)
       })
-      .catch((error) => {
-        console.log(error);
-        return reject(error);
-      });
-  });
+      .catch(error => {
+        return reject(error)
+      })
+  })
 
-export const get = request("get");
+export const get = request("get")

@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { theme } from "theme";
+import styled, { css } from "styled-components"
+import { theme } from "theme"
 
 export const STodo = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ export const STodo = styled.div`
       transition: all 0.2s ease-in-out;
     }
   }
-`;
+`
 
 export const Checkmark = styled.div<{ checked: boolean }>`
   ${theme.glassmorphism}
@@ -33,7 +33,7 @@ export const Checkmark = styled.div<{ checked: boolean }>`
     transition: all 0.2s ease-in-out;
   }
 
-  ${(p) =>
+  ${p =>
     p.checked &&
     css`
       :after {
@@ -45,4 +45,4 @@ export const Checkmark = styled.div<{ checked: boolean }>`
         position: absolute;
       }
     `}
-`;
+`

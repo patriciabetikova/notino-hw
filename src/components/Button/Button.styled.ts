@@ -1,13 +1,15 @@
-import styled from "styled-components/macro";
-import { theme } from "theme";
+import styled from "styled-components/macro"
+import { theme } from "theme"
 
 export const SButton = styled.button`
-  ${theme.glassmorphism}
+  ${theme.glassmorphism};
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 42px;
+  min-height: 42px;
+  text-decoration: none;
 
   :hover {
     background: rgba(255, 255, 255, 0.5);
@@ -18,4 +20,4 @@ export const SButton = styled.button`
     width: 24px;
     height: 24px;
   }
-`;
+`

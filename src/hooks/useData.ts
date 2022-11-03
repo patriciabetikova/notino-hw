@@ -1,27 +1,29 @@
-import * as R from "ramda";
-import React from "react";
+import React, { useCallback } from "react"
 
-export const useData = <T>(
-  req: () => Promise<T>,
-  {
-    refetchParams = [],
-    skip = R.always(false),
-    clearOnParamChange = false,
-  } = {}
-) => {
-  const [data, setData] = React.useState<T | undefined>(undefined);
-  const request = () => req().then((res: T) => setData(res));
+export const useData = <T>(req: () => Promise<T>) => {
+  const [data, setData] = React.useState<T | undefined>(undefined)
+  const [isLoading, setIsLoading] = React.useState<boolean>(true)
+
+  const fetchData = useCallback(() => {
+    req().then((res: T) => {
+      setData(res)
+      setIsLoading(false)
+    })
+  }, [req])
 
   React.useEffect(() => {
-    if (clearOnParamChange) {
-      setData(undefined);
-    }
+    fetchData()
+  }, [fetchData])
 
-    if (!skip()) {
-      request();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, refetchParams);
+  type ReturnType = [
+    T | undefined,
+    {
+      isLoading: boolean
+      setData: React.Dispatch<React.SetStateAction<T | undefined>>
+    },
+  ]
 
-  return [data];
-};
+  const returnedValue: ReturnType = [data, { isLoading, setData }]
+
+  return returnedValue
+}

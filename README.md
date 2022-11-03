@@ -110,13 +110,13 @@ Third issue is the way we redirect to detail page. `window.location.href` handle
 
 # Solution implementation and comment
 
-1. folder structure
+1. Folder structure
 
 For our app to be production ready, I focused on creating readable folder structure. For top-level App component there's its own App folder, that consists of App.tsx, GlobalStyle to normalize styling, and AppRoutes that focuses on Routing, which would also handle Redirecting if we had some need for login and private routing.
 
 Next worth mentioning is components folder, that includes general components used on multiple places within the app, questionable can be Todo components, that are currenty only used in one place each, so alternative is to place them in their specific parent's folder.
 
-context consists of Context and Provider component to keep logic separate from place of implementation for better readability.
+Folder context consists of Context and Provider component to keep logic separate from place of implementation for better readability.
 
 2. Arrow function components instead of classes.
 

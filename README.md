@@ -46,7 +46,7 @@ First issue i see is in todo variable by using `var` in general. There's no good
 
 ```jsx
 React.useEffect(() => {
-  ;(async () => {
+  (async () => {
     var awaitedTodos = await todos()
     for (var i = 0; i < awaitedTodos.length; i++) {
       setState([...state, awaitedTodos[i]])

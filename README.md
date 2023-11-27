@@ -124,10 +124,10 @@ Well, it's 2022, class components only make sense if we're working on legacy cod
 
 3. Styling
 
-I decided to use custom components as opposed to some component library tak can easily double the bundle size. For styling used styled-components, kept mobile screen and large desktop in mind.
+I decided to use custom components as opposed to some component library that can easily double the bundle size. For styling used styled-components, kept mobile screen and large desktop in mind.
 
 ## Places to improve
 
 Currently assignment didn't mention any ability to create new, or edit existing to-dos, therefore the application basically just fetches array of todos from custom made mock api and stores them into context. Any modification and mutation of the data is towards the context, to showcase handling of changes via context api. In usual production app, the deletion and completion of todo would be handled via put/delete api call.
 
-Another possible improvement is towards the UX, there could be sorting of to-dos based on their checked state, automaticly put unchecked ones on top, could be handled with some smooth animation etc.
+Another possible improvement is towards the UX, there could be sorting of to-dos based on their checked state, automatically put unchecked ones on top, could be handled with some smooth animation etc.
